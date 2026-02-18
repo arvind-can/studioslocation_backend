@@ -11,7 +11,6 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,10 +38,10 @@ public class ListingService {
             specs = specs.and(ListingSpecifications.hasPostalCode(filtersDto.postalCode()));
 
         if(filtersDto.minRent() != null)
-            specs = specs.and(ListingSpecifications.hasMorePriceThan(filtersDto.minRent()));
+            specs = specs.and(ListingSpecifications.hasMoreRentThan(filtersDto.minRent()));
 
         if(filtersDto.maxRent() != null)
-            specs = specs.and(ListingSpecifications.hasLessPriceThan(filtersDto.maxRent()));
+            specs = specs.and(ListingSpecifications.hasLessRentThan(filtersDto.maxRent()));
 
         if(filtersDto.minSurface() != null)
             specs = specs.and(ListingSpecifications.hasMoreSurfaceThan(filtersDto.minSurface()));

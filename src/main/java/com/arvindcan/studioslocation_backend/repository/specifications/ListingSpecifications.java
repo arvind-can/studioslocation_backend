@@ -26,12 +26,12 @@ public class ListingSpecifications {
         return (root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get("postalCode"), postalCode);
     }
 
-    public static Specification<Listing> hasMorePriceThan(Integer priceMin) {
-        return (root, query, criteriaBuilder) -> criteriaBuilder.greaterThanOrEqualTo(root.get("price"), priceMin);
+    public static Specification<Listing> hasMoreRentThan(Integer rentMin) {
+        return (root, query, criteriaBuilder) -> criteriaBuilder.greaterThanOrEqualTo(root.get("rent"), rentMin);
     }
 
-    public static Specification<Listing> hasLessPriceThan(Integer priceMax) {
-        return (root, query, criteriaBuilder) -> criteriaBuilder.lessThanOrEqualTo(root.get("price"), priceMax);
+    public static Specification<Listing> hasLessRentThan(Integer rentMax) {
+        return (root, query, criteriaBuilder) -> criteriaBuilder.lessThanOrEqualTo(root.get("rent"), rentMax);
     }
 
     public static Specification<Listing> hasMoreSurfaceThan(Integer surfaceMin) {

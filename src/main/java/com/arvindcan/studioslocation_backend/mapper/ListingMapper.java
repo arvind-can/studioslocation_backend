@@ -25,7 +25,7 @@ public class ListingMapper {
                 listingEntity.getId(),
                 listingEntity.getTitle(),
                 listingEntity.getDescription(),
-                listingEntity.getPrice(),
+                listingEntity.getRent(),
                 listingEntity.getSurface(),
                 listingEntity.getCity(),
                 listingEntity.getPostalCode(),

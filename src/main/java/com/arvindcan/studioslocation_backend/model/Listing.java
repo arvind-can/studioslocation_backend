@@ -15,7 +15,7 @@ public class Listing {
 
   private String title;
   private String description;
-  private int price;
+  private int rent;
   private int surface;
   private String city;
   private int postalCode;
