@@ -1,19 +1,18 @@
 package com.arvindcan.studioslocation_backend.service;
 
 import com.arvindcan.studioslocation_backend.dto.Feature;
-import com.arvindcan.studioslocation_backend.dto.ListingResponseDTO;
+import com.arvindcan.studioslocation_backend.dto.ListingDTO;
 import com.arvindcan.studioslocation_backend.dto.ListingSearchFiltersDTO;
+import com.arvindcan.studioslocation_backend.dto.PaginatedResponseDTO;
 import com.arvindcan.studioslocation_backend.mapper.ListingMapper;
 import com.arvindcan.studioslocation_backend.model.Listing;
 import com.arvindcan.studioslocation_backend.repository.ListingRepository;
 import com.arvindcan.studioslocation_backend.repository.specifications.ListingSpecifications;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -21,14 +20,8 @@ public class ListingService {
     private final ListingRepository listingRepository;
     private final ListingMapper listingMapper;
 
-    public List<ListingResponseDTO> getListings(){
-        Iterable<Listing> listingsEntities = listingRepository.findAll();
-        List<ListingResponseDTO> listingsDTO = new ArrayList<>();
-        listingsEntities.forEach(entity -> listingsDTO.add(listingMapper.toListingReponse(entity)));
-        return listingsDTO;
-    }
+    public PaginatedResponseDTO<ListingDTO> getListingsByFilters(int pageNo, int pageSize, @Valid ListingSearchFiltersDTO filtersDto) {
 
-    public List<ListingResponseDTO> getListingsByFilters(@Valid ListingSearchFiltersDTO filtersDto) {
         //Build the chain of specifications based on DTO values
         Specification<Listing> specs = Specification.unrestricted();
         if(filtersDto.city() != null)
@@ -61,9 +54,10 @@ public class ListingService {
                 specs = specs.and(ListingSpecifications.isWithAttachedKitchen());
         }
 
+
+
         //Query DB and convert resulting entites in DTOs
-        Iterable<Listing> listingsEntities =  listingRepository.findAll(specs);
-        return listingMapper.toListingsResponse(listingRepository.findAll(specs));
+        return listingMapper.toListingsResponse(listingRepository.findAll(specs, PageRequest.of(pageNo, pageSize)));
 
     }
 }

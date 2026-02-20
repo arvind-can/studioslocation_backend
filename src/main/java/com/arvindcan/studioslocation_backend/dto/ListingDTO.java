@@ -1,10 +1,9 @@
 package com.arvindcan.studioslocation_backend.dto;
 
-
 import java.util.Date;
 import java.util.List;
 
-public record ListingResponseDTO (
+public record ListingDTO(
     int id,
     String title,
     String description,
@@ -14,5 +13,4 @@ public record ListingResponseDTO (
     int postalCode,
     List<Feature> feature,
     Date createdAt,
-    Date updatedAt
-){}
+    Date updatedAt) {}

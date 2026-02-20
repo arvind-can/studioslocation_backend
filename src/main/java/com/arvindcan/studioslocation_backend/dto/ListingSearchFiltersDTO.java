@@ -2,9 +2,11 @@ package com.arvindcan.studioslocation_backend.dto;
 import com.arvindcan.studioslocation_backend.dto.validator.numberrange.NumberRange;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Size;
-
 import java.util.List;
 
+/**
+ *  Entry DTO with validation to handle client listings search filters
+ */
 @NumberRange(minField = "minRent", maxField = "maxRent", message = "Le loyer min devrait être inférieur au loyer max")
 @NumberRange(minField = "minSurface", maxField = "maxSurface", message = "La surface min devrait être inférieur à la surface max")
 public record ListingSearchFiltersDTO(
