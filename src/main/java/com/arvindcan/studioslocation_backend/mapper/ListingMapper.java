@@ -1,9 +1,9 @@
 package com.arvindcan.studioslocation_backend.mapper;
 
 import com.arvindcan.studioslocation_backend.dto.Feature;
-import com.arvindcan.studioslocation_backend.dto.ListingDTO;
-import com.arvindcan.studioslocation_backend.dto.PaginatedResponseDTO;
-import com.arvindcan.studioslocation_backend.dto.PaginationDTO;
+import com.arvindcan.studioslocation_backend.dto.response.ListingDTO;
+import com.arvindcan.studioslocation_backend.dto.response.PaginatedResponseDTO;
+import com.arvindcan.studioslocation_backend.dto.response.PaginationDTO;
 import com.arvindcan.studioslocation_backend.model.Listing;
 import java.util.ArrayList;
 import java.util.List;

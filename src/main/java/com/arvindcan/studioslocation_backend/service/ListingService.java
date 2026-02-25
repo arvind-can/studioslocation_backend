@@ -1,9 +1,9 @@
 package com.arvindcan.studioslocation_backend.service;
 
 import com.arvindcan.studioslocation_backend.dto.Feature;
-import com.arvindcan.studioslocation_backend.dto.ListingDTO;
-import com.arvindcan.studioslocation_backend.dto.ListingSearchFiltersDTO;
-import com.arvindcan.studioslocation_backend.dto.PaginatedResponseDTO;
+import com.arvindcan.studioslocation_backend.dto.entry.ListingSearchFiltersDTO;
+import com.arvindcan.studioslocation_backend.dto.response.ListingDTO;
+import com.arvindcan.studioslocation_backend.dto.response.PaginatedResponseDTO;
 import com.arvindcan.studioslocation_backend.mapper.ListingMapper;
 import com.arvindcan.studioslocation_backend.model.Listing;
 import com.arvindcan.studioslocation_backend.repository.ListingRepository;

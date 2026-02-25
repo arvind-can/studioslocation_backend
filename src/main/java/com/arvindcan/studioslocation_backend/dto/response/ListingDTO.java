@@ -1,5 +1,6 @@
-package com.arvindcan.studioslocation_backend.dto;
+package com.arvindcan.studioslocation_backend.dto.response;
 
+import com.arvindcan.studioslocation_backend.dto.Feature;
 import java.util.Date;
 import java.util.List;
 

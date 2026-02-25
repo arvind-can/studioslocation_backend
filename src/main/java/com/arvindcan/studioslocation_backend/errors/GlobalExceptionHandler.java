@@ -32,6 +32,7 @@ public class GlobalExceptionHandler {
   @ExceptionHandler(BindException.class)
   public ResponseEntity<Map<String, String>> handleBindException(BindException ex) {
     Map<String, String> errors = new HashMap<>();
+
     // Field error(ex @Min)
     ex.getBindingResult()
         .getFieldErrors()

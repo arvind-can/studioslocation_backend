@@ -1,4 +1,4 @@
-package com.arvindcan.studioslocation_backend.dto;
+package com.arvindcan.studioslocation_backend.dto.response;
 
 import java.util.List;
 
