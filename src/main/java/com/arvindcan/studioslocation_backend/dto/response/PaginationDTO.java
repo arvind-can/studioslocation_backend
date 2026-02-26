@@ -1,3 +1,3 @@
-package com.arvindcan.studioslocation_backend.dto.entry;
+package com.arvindcan.studioslocation_backend.dto.response;
 
 public record PaginationDTO(int page, int size, long totalElements, int totalPages) {}

@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
   private final UserService service;
 
-  @GetMapping
-  ResponseEntity<UserDTO> getUserByEmail(@Valid @RequestParam String email) {
-    return ResponseEntity.ok(service.getUserByEmail(email.trim()));
+  @GetMapping("/{id}")
+  ResponseEntity<UserDTO> getUserById(@Valid @PathVariable int id) {
+    return ResponseEntity.ok(service.getUserById(id));
   }
 
   @PostMapping

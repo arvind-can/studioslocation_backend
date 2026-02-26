@@ -32,4 +32,12 @@ public class UserService {
 
     return mapper.toResponse(foundEntity.get());
   }
+
+  public UserDTO getUserById(int id) {
+    Optional<User> foundEntity = repo.findUserById(id);
+    if (foundEntity.isEmpty())
+      throw new ResourceNotFoundException("User with id : " + id + " not found");
+
+    return mapper.toResponse(foundEntity.get());
+  }
 }

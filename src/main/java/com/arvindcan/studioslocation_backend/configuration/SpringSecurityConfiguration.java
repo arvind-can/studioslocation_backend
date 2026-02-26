@@ -5,11 +5,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -24,7 +21,7 @@ public class SpringSecurityConfiguration {
         auth -> {
           // Routes publiques
           auth.requestMatchers("/listings/**").permitAll();
-          auth.requestMatchers("/users/**").permitAll();
+          auth.requestMatchers("/users", "/users/**").permitAll();
 
           auth.requestMatchers("/login", "/register").permitAll();
 
@@ -42,25 +39,7 @@ public class SpringSecurityConfiguration {
   }
 
   @Bean
-  UserDetailsService userDetailsService() {
-    UserDetails u1 =
-        User.builder()
-            .username("Arvind")
-            .password(passwordEncoder().encode("waf"))
-            .roles("USER")
-            .build();
-    UserDetails u2 =
-        User.builder()
-            .username("Viveha")
-            .password(passwordEncoder().encode("meow"))
-            .roles("USER")
-            .build();
-
-    return new InMemoryUserDetailsManager(u1, u2);
-  }
-
-  @Bean
-  public BCryptPasswordEncoder passwordEncoder() {
+  public PasswordEncoder passwordEncoder() {
     return new BCryptPasswordEncoder();
   }
 }

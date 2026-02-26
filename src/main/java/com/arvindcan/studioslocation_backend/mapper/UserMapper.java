@@ -3,10 +3,15 @@ package com.arvindcan.studioslocation_backend.mapper;
 import com.arvindcan.studioslocation_backend.dto.entry.UserCreationDTO;
 import com.arvindcan.studioslocation_backend.dto.response.UserDTO;
 import com.arvindcan.studioslocation_backend.model.User;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor
 public class UserMapper {
+
+  private final PasswordEncoder encoder;
 
   public UserDTO toResponse(User entity) {
     UserDTO dto =
@@ -19,7 +24,7 @@ public class UserMapper {
     entity.setFirstname(dto.firstname());
     entity.setLastname(dto.lastname());
     entity.setEmail(dto.email());
-    entity.setPassword(dto.password());
+    entity.setPassword(encoder.encode(dto.password()));
     return entity;
   }
 }

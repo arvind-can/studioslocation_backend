@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-/*@CrossOrigin(origins = "http://localhost:5173")*/
+@CrossOrigin(origins = "http://localhost:5173")
 @Validated
 public class ListingController {
 
